@@ -1,13 +1,17 @@
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import Asidebar from './dashboard/_components/Asidebar';
+
 export default function MainLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <div className="w-full h-auto">
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="w-full max-w-[450px] mx-auto h-auto ">{children}</div>
-      </div>
-    </div>
+    <SidebarProvider>
+      <Asidebar />
+      <SidebarInset>
+        <main className="w-full">{children}</main>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }
